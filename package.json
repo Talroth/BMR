@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Talroth/BMR/issues"
   },
-  "homepage": "https://github.com/Talroth/BMR#readme"
+  "homepage": "https://github.com/Talroth/BMR#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
