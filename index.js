@@ -8,7 +8,7 @@ const app = express();
 
 routing.routing.Load(app);
 processController.Init(app);
-db.connect('mongodb://admin@ds161032.mlab.com:61032/talmongodb').then(function() {
+db.connect('mongodb://troth:123456@ds161032.mlab.com:61032/talmongodb').then(function() {
     console.log("Success to connect");
 }, function() { console.log("Failed to connect")})
 

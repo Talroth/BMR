@@ -11,6 +11,16 @@ mod.GetBatchHeader = function(batchID) {
     // The data now can be processed by ProcessLogic functions or specific function of the wrap object for DAO (first option is like MM, second is OOP)
     // What is returning is logic object which contains data to present in client side (end of REST call)
     return processDataLayer.GetBatchHeader(batchID);
+    // return new Promise(function(resolve, reject) {
+    //     resolve(processDataLayer.GetBatchHeader(batchID).then(function(response,err) {
+    //         return response;
+    //     },
+    //     function() {
+    //         reject(err);
+    //     })
+    // );
+        
+    // });
 }
 
 return mod;

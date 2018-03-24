@@ -18,8 +18,15 @@ mod.GetBatchHeader = function(app) {
        // var batchID = req.query.ID;
        var batchID = 1;
        console.log("GetBatchHeader");
-        var response = processControllerLogic.GetBatchHeader(batchID);
-        res.send("OK");
+       processControllerLogic.GetBatchHeader(batchID).then(function(response, err) {
+           if (err)
+           {
+               res.send(err);
+           }
+        res.send(response);
+       });
+       
+
         // TODO: return the data back by res var
     })
 }
