@@ -5,22 +5,26 @@ const schemas = require('./Schemas');
 const jsonToObj = require('./JSONToObject')
 var mod = module.exports = {};
 
+
 mod.GetBatchHeader = function(batchID) {
-    return new Promise(function(resolve,reject){
-        var conn =  new mongoDBConnection();
-            var response = conn.GetModel('BatchHeader', schemas.batchHeaderSchema);
-                response.findOne({'ID':'1'}, function(err, header) {
-                    if (err) { 
-                        console.log(err);
-                        reject(err);
-                    }
-                    // TODO: convert result to batchHeader object type
-                    var result = new batchHeader();
-                    jsonToObj.Copy(header, result);
-                    console.log(header.BatchNumber);
-                    resolve(JSON.stringify(result));    
-            });
-    });
+     return mongoDBConnection.FindOne('BatchHeader', schemas.batchHeaderSchema, 'BatchNumber', batchID, new batchHeader());
+     
+    // In that way can use logic on the result, if there is no need in additional logic can return it as is
+//     var pr = mongoDBConnection.FindOne('BatchHeader', schemas.batchHeaderSchema, 'BatchNumber', batchID, new batchHeader()).then(
+//         function(response, err) {
+//         return new Promise(function(res,rej) {
+//             if (err) {
+//                 rej(err);
+//             }
+//             else
+//             {
+//                 res(response);
+//             }
+//         });    
+//     }
+// );
+
+// return pr;
 }
 
 mod.GetBatchData = function(batchID) {

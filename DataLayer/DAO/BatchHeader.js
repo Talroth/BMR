@@ -30,7 +30,7 @@ var endDate = null;
 // Constructor
  function batchHeaderMongoObject() {
     // Init public propeties
-    this.ID = id;
+    this._id = id;
     this.BatchNumber = batchNumber;
     this.StartDate = startDate;
     this.EndDate = endDate;

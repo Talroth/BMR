@@ -4,27 +4,24 @@ var mod = module.exports = {};
 
 mod.GetBatchData = function(app) {
     app.get('/GetBatchData', (req, res) => {
-       // var batchID = req.query.ID;
-       var batchID = 1;
-       console.log("GetBatchData" + req);
         var response = processControllerLogic.GetBatchData(batchID);
         res.send(response);
         // TODO: return the data back by res var
     })
 }
 
+// TODO: return wrap output object as i put in the db, need to understand how to send reject without fail in the way, that will allow throw exception up here
 mod.GetBatchHeader = function(app) {
-    app.get('/GetBatchHeader', (req, res) => {
-       // var batchID = req.query.ID;
-       var batchID = 1;
-       console.log("GetBatchHeader");
-       processControllerLogic.GetBatchHeader(batchID).then(function(response, err) {
-           if (err)
-           {
-               res.send(err);
-           }
-        res.send(response);
-       });
+    app.get('/GetBatchHeader/', (req, res) => {
+    var batchID = req.query.batchID;
+    console.log("GetBatchHeader");
+    processControllerLogic.GetBatchHeader(batchID).then(function(response, err) {
+        if (err)
+        {
+            res.send(err);
+        }
+    res.send(response);
+    });
        
 
         // TODO: return the data back by res var

@@ -15,7 +15,10 @@ this.JsonToObject = function(json, obj)
 jsonToObject.Copy = function(src, trg) {
     Object.getOwnPropertyNames(trg).forEach(
         function (val, idx, array) {
-            trg[val] = src[val];
+            if (src != null)
+            {
+                trg[val] = src[val];
+            }            
         //   console.log(val + ' -> ' + obj[val]);
         }
       );

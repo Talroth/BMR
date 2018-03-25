@@ -7,7 +7,7 @@ function Schemas() {
 
 // With prototype if method per instance and without is in "class" level
 Schemas.batchHeaderSchema = new db.Schema({
-    ID: String,
+    _id: db.Schema.Types.ObjectId,
     BatchNumber: String,
     StartDate: Date,
     EndDate: Date
