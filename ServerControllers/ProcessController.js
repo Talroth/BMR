@@ -1,4 +1,4 @@
-var processControllerLogic = require('./../LogicLayer/ProcessControllerLogic')
+var processControllerLogic = require('./../LogicLayer/Controllers/ProcessControllerLogic')
 
 var mod = module.exports = {};
 
@@ -15,6 +15,7 @@ mod.GetBatchHeader = function(app) {
     app.get('/GetBatchHeader/', (req, res) => {
     var batchID = req.query.batchID;
     console.log("GetBatchHeader");
+    // Using async allow to use then only here without handle many promises issues
     processControllerLogic.GetBatchHeader(batchID).then(function(response, err) {
         if (err)
         {

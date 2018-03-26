@@ -1,13 +1,8 @@
 const db = require('mongoose');
 const jsonToObj = require('./JSONToObject')
 
-// Can be singelton there fore replace all MongoDBConnection.prototype to this
-
-// function MongoDBConnection()  {
-//     // db.createConnection('mongodb://admin@ds161032.mlab.com:61032/talmongodb').then(function() {
-//     //     console.log("Success to connect");
-//     // }, function() { console.log("Failed to connect")}) // TODO: this should perform only at the begining, no need to close each query and should be singleton
-// }
+// This one is like entity framework code, it should be kept general and contain only C.R.U.D and general object convert
+// This is for mongo only, this file need to be different for other source like MySQL
 
 this.GetConnectionState = function() {
     var st = db.connection.readyState;
@@ -28,6 +23,7 @@ this.WrapOutput = function(data) {
 }
 
 // C.R.U.D
+// TODO: try with async
 this.FindOne = function(collection, schema, field, value, object) {
     // TODO: wrap object need to be outside not here
     var that = this;
