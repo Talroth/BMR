@@ -19,14 +19,8 @@ jsonToObject.Copy = function(src, trg) {
             {
                 trg[val] = src[val];
             }            
-        //   console.log(val + ' -> ' + obj[val]);
         }
       );
-
-    // for (var prop in Object.getOwnPropertyNames(trg))
-    // {
-    //     trg[prop.valueOf] = src[prop];
-    // } 
 }
 
 return module.exports = jsonToObject;

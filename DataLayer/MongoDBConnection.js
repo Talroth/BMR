@@ -13,14 +13,6 @@ this.GetModel = function(collection, schema) {
     return  db.model(collection, schema, collection);
 }
 
-this.WrapOutput = function(data) {
-    var wrapObject = Object();
-    wrapObject.IsSuccess = false;
-    wrapObject.Message = "";
-    wrapObject.Data = data;
-
-    return wrapObject;
-}
 
 // C.R.U.D
 // TODO: try with async
@@ -34,22 +26,18 @@ this.FindOne = function(collection, schema, field, value, object) {
             response.findOne({[field] : value}, function(err, header) {                
                 if (err) { 
                     console.log(err);
-                    reject(err);
+                     reject(new Error(err));
                 }
 
-                jsonToObj.Copy(header, object);   
-                var output = that.WrapOutput(object);            
-
-                if (object._id != 0)
+                if (header == null)
                 {
-                    output.IsSuccess = true;
+                    resolve(header);
                 }
                 else
                 {
-                    output.Message = "Missing ID";
+                    jsonToObj.Copy(header, object);   
+                    resolve(object);                    
                 }
-
-                resolve(output);
 
         });
     });
