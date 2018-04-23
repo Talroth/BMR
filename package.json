@@ -21,6 +21,8 @@
     "mongoose": "^5.0.10"
   },
   "devDependencies": {
+    "babel-preset-es2016": "^6.24.1",
+    "babel-register": "^6.26.0",
     "nodemon": "^1.17.2"
   }
 }

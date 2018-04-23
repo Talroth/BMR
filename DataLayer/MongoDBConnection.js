@@ -1,5 +1,6 @@
+
 const db = require('mongoose');
-const jsonToObj = require('./JSONToObject')
+// import jsonToObj from "./JSONToObject";
 
 // This one is like entity framework code, it should be kept general and contain only C.R.U.D and general object convert
 // This is for mongo only, this file need to be different for other source like MySQL
@@ -35,8 +36,9 @@ this.FindOne = function(collection, schema, field, value, object) {
                 }
                 else
                 {
-                    jsonToObj.Copy(header, object);   
-                    resolve(object);                    
+                    // jsonToObj.Copy(header, object);   
+                    // resolve(object);       
+                    resolve(header);             
                 }
 
         });
@@ -55,10 +57,10 @@ this.FindByID = function(collection, schema, id, object) {
                     reject(err);
                 }
 
-                jsonToObj.Copy(header, object);
-                if (object._id != 0)
+                // jsonToObj.Copy(header, object);
+                if (header._id != 0)
                 {
-                    resolve(object);   
+                    resolve(header);   
                 }
                 else
                 {
@@ -81,10 +83,10 @@ this.Find = function(collection, schema, query, object) {
                     reject(err);
                 }
 
-                jsonToObj.Copy(header, object);
-                if (object._id != 0)
+                // jsonToObj.Copy(header, object);
+                if (header._id != 0)
                 {
-                    resolve(object);    
+                    resolve(header);    
                 }
                 else
                 {

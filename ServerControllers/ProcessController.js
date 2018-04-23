@@ -1,4 +1,4 @@
-var processControllerLogic = require('./../LogicLayer/Controllers/ProcessControllerLogic')
+var processControllerLogic = require('./../LogicLayer/Controllers/ProcessControllerLogic');
 
 var mod = module.exports = {};
 
@@ -12,9 +12,9 @@ mod.GetBatchData = function(app) {
 
 // TODO: return wrap output object as i put in the db, need to understand how to send reject without fail in the way, that will allow throw exception up here
 mod.GetBatchHeader = function(app) {
-    app.get('/GetBatchHeader/', (req, res) => {
-    var batchID = req.query.batchID;
+    app.get('/GetBatchHeader/', (req, res) => {      
     console.log("GetBatchHeader");
+    var batchID = req.query["batchid"];  
     // Using async allow to use then only here without handle many promises issues
     processControllerLogic.GetBatchHeader(batchID).then(function(response, err) {
         if (err)
